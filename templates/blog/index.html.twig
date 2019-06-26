@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Amaury Gimonnet{% endblock %}
+{% block body %}
+    <h2>{{ title }}</h2>
+
+    <a href="{{ path('blog_create') }}">Ajouter un nouveau projet</a>
+
+    <p>Ps. email: amaurygimonnet@gmail.com, mot de passe: adminamaury<br/>
+    ou sinon, inscription sur: http://127.0.0.1:8000/inscription</p>
+
+    <section class="articles">
+        {% for article in articles %}
+        <div class="content">
+            <h3>{{ article.title }}</h3>
+            <img src="{{ article.image }}">
+            {{ article.content | raw}}
+            <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Lire la suite</a>
+        </div>
+        {% endfor %}
+    </section>
+{% endblock %}
